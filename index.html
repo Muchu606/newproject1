@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Security headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; form-action 'self'; frame-ancestors 'none'; base-uri 'self';" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
   <!-- ✏️ EDIT: Change the browser tab title below -->
   <title>Pal Cleaners & Janitors – Luxurious Cleaning Services. Peace of mind. Always</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -972,22 +978,22 @@
         <div class="form-group">
           <!-- ✏️ EDIT: Form field labels and placeholder text -->
           <label for="first-name">First Name</label>
-          <input id="first-name" name="first_name" type="text" placeholder="Your first name" required />
+          <input id="first-name" name="first_name" type="text" placeholder="Your first name" required maxlength="100" autocomplete="given-name" />
         </div>
         <div class="form-group">
           <label for="last-name">Last Name</label>
-          <input id="last-name" name="last_name" type="text" placeholder="Your last name" required />
+          <input id="last-name" name="last_name" type="text" placeholder="Your last name" required maxlength="100" autocomplete="family-name" />
         </div>
       </div>
 
       <div class="form-group">
         <label for="phone">Phone / WhatsApp</label>
-        <input id="phone" name="phone" type="tel" placeholder="+256 ..." required />
+        <input id="phone" name="phone" type="tel" placeholder="+256 ..." required pattern="\+?[0-9\s\-]{7,20}" title="Enter a valid phone number" autocomplete="tel" />
       </div>
 
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" name="email" type="email" placeholder="you@email.com" required />
+        <input id="email" name="email" type="email" placeholder="you@email.com" required maxlength="254" autocomplete="email" />
       </div>
 
       <!-- ✏️ EDIT: Service dropdown options -->
@@ -1004,7 +1010,7 @@
 
       <div class="form-group">
         <label for="message">Additional Message</label>
-        <textarea id="message" name="message" placeholder="Tell us a bit about your situation and when you need care..."></textarea>
+        <textarea id="message" name="message" placeholder="Tell us a bit about your situation and when you need care..." maxlength="2000"></textarea>
       </div>
 
       <!-- ✏️ EDIT: Submit button text -->
@@ -1091,6 +1097,14 @@
           showStatus(errors.join(' '), true);
           return;
         }
+
+        // Sanitize text inputs (HTML entity encoding) before any future server submission
+        var textInputs = form.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"], textarea');
+        textInputs.forEach(function(input) {
+          var div = document.createElement('div');
+          div.textContent = input.value.trim();
+          input.value = div.innerHTML;
+        });
 
         showStatus('Thank you! Your enquiry has been received. We will get back to you within 24 hours.', false);
         form.reset();
