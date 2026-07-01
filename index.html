@@ -84,6 +84,40 @@
     }
 
     /* ===================================================
+       SHARED UTILITIES
+    =================================================== */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .mv-card h3, .service-card h3, .schedule-card h3,
+    .contact-form h3, .why-item h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+    }
+    .mv-card p, .service-card p, .schedule-card p,
+    .why-item p, .about-content p, .contact-info p,
+    .contact-detail-text, .faq-a, .form-intro {
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .mv-card, .service-card, .schedule-card {
+      transition: transform 0.3s;
+    }
+    .mv-card:hover, .service-card:hover, .schedule-card:hover {
+      transform: translateY(-6px);
+    }
+    .btn-inline {
+      display: inline-block;
+    }
+    .form-intro {
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    /* ===================================================
        NAVBAR
     =================================================== */
     nav {
@@ -265,7 +299,6 @@
     /* ===================================================
        ABOUT SECTION
     =================================================== */
-    #About { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .about-image-wrap {
       position: relative;
     }
@@ -293,10 +326,8 @@
     /* ✏️ EDIT: About section text content */
     .about-content .section-title { margin-bottom: 20px; }
     .about-content p {
-      color: var(--text-muted);
       line-height: 1.85;
       margin-bottom: 16px;
-      font-weight: 300;
     }
 
     /* ===================================================
@@ -311,7 +342,6 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .mv-card:hover {
-      transform: translateY(-6px);
       box-shadow: 0 16px 60px rgba(0,0,0,0.4);
     }
     .mv-icon {
@@ -323,16 +353,12 @@
     }
     /* ✏️ EDIT: Mission/Vision/Purpose card titles and text */
     .mv-card h3 {
-      font-family: var(--font-display);
       font-size: 1.5rem;
-      font-weight: 400;
       margin-bottom: 12px;
     }
     .mv-card p {
-      color: var(--text-muted);
       font-size: 0.92rem;
       line-height: 1.8;
-      font-weight: 300;
     }
 
     /* ===================================================
@@ -348,8 +374,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 28px;
     }
-    .service-card { padding: 40px 36px; transition: transform 0.3s; }
-    .service-card:hover { transform: translateY(-6px); }
+    .service-card { padding: 40px 36px; }
     .service-num {
       font-family: var(--font-display);
       font-size: 3rem;
@@ -361,18 +386,13 @@
     }
     /* ✏️ EDIT: Service card titles */
     .service-card h3 {
-      font-family: var(--font-display);
       font-size: 1.6rem;
-      font-weight: 400;
       margin-bottom: 14px;
     }
-    /* ✏️ EDIT: Service card descriptions */
     .service-card p {
-      color: var(--text-muted);
       font-size: 0.9rem;
       line-height: 1.8;
       margin-bottom: 16px;
-      font-weight: 300;
     }
     .service-card ul {
       list-style: none; padding: 0;
@@ -393,9 +413,6 @@
     /* ===================================================
        WHY US SECTION
     =================================================== */
-    #why {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
     .why-list { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
     .why-item {
       padding: 24px 28px;
@@ -410,11 +427,10 @@
     }
     /* ✏️ EDIT: Why Us feature titles and descriptions */
     .why-item h4 {
-      font-family: var(--font-display);
-      font-size: 1.15rem; font-weight: 400;
+      font-size: 1.15rem;
       margin-bottom: 6px;
     }
-    .why-item p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; }
+    .why-item p { font-size: 0.85rem; line-height: 1.7; }
     .why-image img {
       width: 100%; border-radius: 16px;
       object-fit: cover; height: 520px;
@@ -425,6 +441,7 @@
        PRICING SECTION
     =================================================== */
     #pricing { text-align: center; }
+    #pricing .section-title { margin: 0 auto; }
     .pricing-note {
       color: var(--text-muted); font-size: 1rem;
       max-width: 520px; margin: 16px auto 48px;
@@ -436,10 +453,9 @@
     }
     .schedule-card {
       padding: 40px 32px;
-      text-align: left; transition: transform 0.3s;
+      text-align: left;
       position: relative; overflow: hidden;
     }
-    .schedule-card:hover { transform: translateY(-6px); }
     .schedule-card.featured {
       border-color: var(--accent);
       background: rgba(200,169,110,0.08);
@@ -457,21 +473,18 @@
     }
     /* ✏️ EDIT: Schedule card titles */
     .schedule-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.7rem; font-weight: 400;
+      font-size: 1.7rem;
       margin-bottom: 16px;
     }
-    /* ✏️ EDIT: Schedule card descriptions */
     .schedule-card p {
-      color: var(--text-muted);
       font-size: 0.88rem; line-height: 1.8;
-      font-weight: 300;
     }
 
     /* ===================================================
        FAQ SECTION
     =================================================== */
     #faq { max-width: 800px; margin: 0 auto; }
+    #faq .section-tag { display: block; text-align: center; }
     #faq .section-title { text-align: center; margin: 0 auto 48px; }
     .faq-list { display: flex; flex-direction: column; gap: 16px; }
     .faq-item { padding: 0; overflow: hidden; }
@@ -503,9 +516,7 @@
       max-height: 0; overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s;
       padding: 0 28px;
-      color: var(--text-muted);
       font-size: 0.88rem; line-height: 1.85;
-      font-weight: 300;
     }
     .faq-item.open .faq-a {
       max-height: 200px;
@@ -516,12 +527,12 @@
        CONTACT SECTION
     =================================================== */
     #Contact {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+      align-items: start;
     }
     .contact-info .section-title { margin-bottom: 24px; }
     .contact-info p {
-      color: var(--text-muted); font-size: 0.95rem;
-      line-height: 1.8; font-weight: 300; margin-bottom: 32px;
+      font-size: 0.95rem;
+      line-height: 1.8; margin-top: 16px; margin-bottom: 32px;
     }
     /* ✏️ EDIT: Contact details (phone, email, location) */
     .contact-details { display: flex; flex-direction: column; gap: 16px; }
@@ -530,7 +541,7 @@
       padding: 16px 20px;
     }
     .contact-detail-icon { font-size: 1.2rem; }
-    .contact-detail-text { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; }
+    .contact-detail-text { font-size: 0.88rem; }
     .contact-detail-label {
       font-size: 0.7rem; color: var(--accent);
       text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px;
@@ -539,8 +550,7 @@
     /* Contact Form */
     .contact-form { display: flex; flex-direction: column; gap: 16px; padding: 40px 36px; }
     .contact-form h3 {
-      font-family: var(--font-display);
-      font-size: 1.6rem; font-weight: 400;
+      font-size: 1.6rem;
       margin-bottom: 8px;
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -599,7 +609,7 @@
        RESPONSIVE
     =================================================== */
     @media (max-width: 900px) {
-      #About, #why, #Contact {
+      .two-col-grid {
         grid-template-columns: 1fr;
       }
       .about-image-wrap img, .why-image img { height: 320px; }
@@ -670,7 +680,7 @@
   <!-- ============================================================
        ABOUT SECTION — ✏️ EDIT: image, heading, paragraphs
   ============================================================ -->
-  <section id="About">
+  <section id="About" class="two-col-grid">
     <div class="about-image-wrap">
       <!-- ✏️ EDIT: Replace this with your actual about/team image -->
       <img src="" alt="Our Team" />
@@ -685,13 +695,13 @@
       <!-- ✏️ EDIT: About section headline -->
       <h2 class="section-title">Guided by <em>Compassion,</em><br />Driven by Excellence</h2>
       <!-- ✏️ EDIT: About paragraphs -->
-      <p style="margin-top:20px; color:var(--text-muted); line-height:1.85; font-weight:300;">
+      <p style="margin-top:20px;">
         PAL CLEANERS & JANITORS is 
       </p>
-      <p style="color:var(--text-muted); line-height:1.85; font-weight:300;">
+      <p>
         We offer ideal, absolute and reliable cleaning solutions
       </p>
-      <a href="#Contact" class="btn-primary" style="margin-top:28px; display:inline-block;">Contact Us Today</a>
+      <a href="#Contact" class="btn-primary btn-inline" style="margin-top:28px;">Contact Us Today</a>
 
       <!-- Mission / Vision Cards -->
       <div class="mv-grid">
@@ -758,7 +768,7 @@
   <!-- ============================================================
        WHY US SECTION — ✏️ EDIT: features and image
   ============================================================ -->
-  <section id="why">
+  <section id="why" class="two-col-grid">
     <div>
       <span class="section-tag">Why Choose Us</span>
       <!-- ✏️ EDIT: Why Us section headline -->
@@ -802,7 +812,7 @@
         </div>
 
       </div>
-      <a href="#Contact" class="btn-primary" style="margin-top:36px; display:inline-block;">Contact Us Today</a>
+      <a href="#Contact" class="btn-primary btn-inline" style="margin-top:36px;">Contact Us Today</a>
     </div>
     <div class="why-image">
       <!-- ✏️ EDIT: Replace with your own "Why Us" section image -->
@@ -816,10 +826,10 @@
   <section id="pricing">
     <span class="section-tag">Our Pricing</span>
     <!-- ✏️ EDIT: Pricing section headline -->
-    <h2 class="section-title" style="margin:0 auto; text-align:center;">Cleaning Services Worth<br /><em>Your Trust</em></h2>
+    <h2 class="section-title">Cleaning Services Worth<br /><em>Your Trust</em></h2>
     <!-- ✏️ EDIT: Pricing note / disclaimer -->
     <p class="pricing-note">Our pricing varies based on.</p>
-    <a href="#Contact" class="btn-primary" style="display:inline-block; margin-bottom:48px;">Request A Quote</a>
+    <a href="#Contact" class="btn-primary btn-inline" style="margin-bottom:48px;">Request A Quote</a>
 
     <div class="care-schedules">
 
@@ -850,9 +860,9 @@
   <!-- ============================================================
        FAQ SECTION — ✏️ EDIT: questions and answers
   ============================================================ -->
-  <section style="padding:100px 5%; position:relative; z-index:1;">
+  <section>
     <div id="faq">
-      <span class="section-tag" style="display:block; text-align:center;">FAQ</span>
+      <span class="section-tag">FAQ</span>
       <h2 class="section-title">Everything You Need<br /><em>to Know</em></h2>
       <div class="faq-list">
 
@@ -917,13 +927,13 @@
   <!-- ============================================================
        CONTACT SECTION — ✏️ EDIT: contact details and form fields
   ============================================================ -->
-  <section id="Contact">
+  <section id="Contact" class="two-col-grid">
     <div class="contact-info">
       <span class="section-tag">Get In Touch</span>
       <!-- ✏️ EDIT: Contact section headline -->
       <h2 class="section-title">Let's Talk About<br /><em>Your Loved working and living space.</em></h2>
       <!-- ✏️ EDIT: Contact intro paragraph -->
-      <p style="margin-top:16px;">Reach out today to discuss your needs and we'll recommend the right plan. Our team is available every day to help.</p>
+      <p>Reach out today to discuss your needs and we'll recommend the right plan. Our team is available every day to help.</p>
 
       <div class="contact-details">
 
@@ -961,7 +971,7 @@
     <div class="glass contact-form">
       <!-- ✏️ EDIT: Form heading -->
       <h3>Book a Service</h3>
-      <p style="color:var(--text-muted); font-size:0.88rem; font-weight:300; margin-bottom:8px;">Fill in the form and we'll get back to you within 24 hours.</p>
+      <p class="form-intro">Fill in the form and we'll get back to you within 24 hours.</p>
 
       <div class="form-row">
         <div class="form-group">
