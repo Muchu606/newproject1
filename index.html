@@ -1032,11 +1032,14 @@
   </footer>
 
   <!-- ============================================================
-       JAVASCRIPT — FAQ accordion (no edits needed here)
+       JAVASCRIPT — FAQ accordion
+       Note: src/faq.js is the testable module (used by Jest).
+       The inline toggleFaq below is the browser runtime version.
   ============================================================ -->
   <script>
     function toggleFaq(btn) {
       try {
+        if (!btn) return;
         var item = btn.closest('.faq-item');
         if (!item) return;
         var isOpen = item.classList.contains('open');
