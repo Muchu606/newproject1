@@ -1033,17 +1033,10 @@
 
   <!-- ============================================================
        JAVASCRIPT — FAQ accordion
+       Note: src/faq.js is the testable module (used by Jest).
+       The inline toggleFaq below is the browser runtime version.
   ============================================================ -->
-  <script src="src/faq.js"></script>
   <script>
-    // Initialize FAQ accordion on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof initFaq === 'function') {
-        initFaq();
-      }
-    });
-
-    // Fallback for inline onclick handlers
     function toggleFaq(btn) {
       try {
         if (!btn) return;
