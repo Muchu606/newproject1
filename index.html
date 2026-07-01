@@ -1032,11 +1032,21 @@
   </footer>
 
   <!-- ============================================================
-       JAVASCRIPT — FAQ accordion (no edits needed here)
+       JAVASCRIPT — FAQ accordion
   ============================================================ -->
+  <script src="src/faq.js"></script>
   <script>
+    // Initialize FAQ accordion on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof initFaq === 'function') {
+        initFaq();
+      }
+    });
+
+    // Fallback for inline onclick handlers
     function toggleFaq(btn) {
       try {
+        if (!btn) return;
         var item = btn.closest('.faq-item');
         if (!item) return;
         var isOpen = item.classList.contains('open');
